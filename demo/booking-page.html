@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Appointment | Élan Spa</title>
+
+    <link rel="icon" href="favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/booking-page.css">
+    
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stripe Elements -->
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">Élan Spa</a>
+        </div>
+
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#prices">Prices</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="booking.html" class="btn-header-book">Book Now</a></li>
+          </ul>
+        </nav>
+
+        <div class="burger-menu" id="burgerMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="booking-hero">
+      <div class="container">
+        <div class="booking-hero-content">
+          <div class="booking-breadcrumb">
+            <a href="index.html">Home</a> <span>/</span>
+            <span>Book Appointment</span>
+          </div>
+
+          <h1>Book Your Spa Experience</h1>
+          <p class="hero-description">
+            Schedule your relaxation session with secure online payment
+          </p>
+
+          <div class="booking-steps">
+            <div class="step active">
+              <span class="step-number">1</span>
+              <span class="step-text">Service</span>
+            </div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <span class="step-text">Time</span>
+            </div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <span class="step-text">Details</span>
+            </div>
+            <div class="step">
+              <span class="step-number">4</span>
+              <span class="step-text">Payment</span>
+            </div>
+            <div class="step">
+              <span class="step-number">5</span>
+              <span class="step-text">Confirm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MAIN BOOKING CONTENT ================= -->
+    <main class="booking-main">
+      <div class="container">
+        <div class="booking-wrapper">
+          <!-- Left column - form -->
+          <div class="booking-form-container">
+            <div class="form-card">
+             <!-- Step 1: Service selection -->
+              <div class="form-step active" id="step1">
+                <div class="step-header">
+                  <h2><i class="fas fa-spa"></i> Choose Your Treatment</h2>
+                  <p>Select the service that best suits your needs</p>
+                </div>
+
+                <div class="services-grid">
+                  <!-- Services will be populated by JS -->
+                </div>
+
+                <div class="step-actions">
+                  <button class="btn btn-next" onclick="nextStep(2)">
+                    Next: Select Date & Time <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Date and time -->
+              <div class="form-step" id="step2">
+                <div class="step-header">
+                  <h2>
+                    <i class="far fa-calendar-alt"></i> Select Date & Time
+                  </h2>
+                  <p>Choose when you'd like to visit us</p>
+                </div>
+
+                <div class="datetime-selection">
+                  <div class="date-selection">
+                    <h4>Select Date</h4>
+                    <div class="date-picker">
+                      <input type="date" id="bookingDate" min="" />
+                    </div>
+                  </div>
+
+                  <div class="time-selection">
+                    <h4>Available Times</h4>
+                    <div class="time-slots" id="timeSlots">
+                      <!-- Times will be populated by JS -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button class="btn btn-back" onclick="prevStep(1)">
+                    <i class="fas fa-arrow-left"></i> Back
+                  </button>
+                  <button class="btn btn-next" onclick="nextStep(3)">
+                    Next: Your Details <i class="fas fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: User data -->
+              <div class="form-step" id="step3">
+                <div class="step-header">
+                  <h2><i class="fas fa-user"></i> Your Information</h2>
+                  <p>Please provide your contact details</p>
+                </div>
+
+                <form id="bookingForm" class="booking-form">
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="fullName">Full Name *</label>
+                      <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="John Smith"
+                        required
+                      />
+                      <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email Address *</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="john@example.com"
+                        required
+                      />
+                      <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="phone">Phone Number *</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="(123) 456-7890"
+                        required
+                      />
+                      <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group full-width">
+                      <label for="message">Special Requests</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="3"
+                        placeholder="Any allergies, injuries, or specific areas to focus on..."
+                      ></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                      <label class="checkbox-label">
+                        <input type="checkbox" name="newsletter" checked />
+                        <span>Send me wellness tips and special offers</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="step-actions">
+                    <button class="btn btn-back" onclick="prevStep(2)">
+                      <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-next"
+                      onclick="nextStep(4)"
+                    >
+                      Next: Payment <i class="fas fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Step 4: Payment -->
+              <div class="form-step" id="step4">
+                <div class="step-header">
+                  <h2><i class="fas fa-credit-card"></i> Payment Details</h2>
+                  <p>Secure payment processed by Stripe</p>
+                </div>
+
+                <div class="payment-container">
+                  <div class="payment-methods">
+                    <div class="payment-method active" data-method="card">
+                      <i class="fas fa-credit-card"></i>
+                      <span>Credit/Debit Card</span>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                      <i class="fab fa-paypal"></i>
+                      <span>PayPal</span>
+                    </div>
+                  </div>
+
+                  <div class="card-payment-form">
+                    <div class="form-group">
+                      <label for="cardNumber">Card Number</label>
+                      <div id="cardNumber" class="stripe-element"></div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="cardExpiry">Expiration Date</label>
+                        <div id="cardExpiry" class="stripe-element"></div>
+                      </div>
+                      <div class="form-group">
+                        <label for="cardCvc">CVC</label>
+                        <div id="cardCvc" class="stripe-element"></div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cardName">Name on Card</label>
+                      <input
+                        type="text"
+                        id="cardName"
+                        placeholder="JOHN SMITH"
+                      />
+                    </div>
+
+                    <div class="payment-security">
+                      <i class="fas fa-lock"></i>
+                      <span
+                        >Your payment is secured with 256-bit SSL
+                        encryption</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="paypal-payment-form" style="display: none">
+                    <div class="paypal-button-container">
+                      <div id="paypal-button"></div>
+                    </div>
+                    <p class="paypal-note">
+                      You will be redirected to PayPal to complete your payment
+                    </p>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button class="btn btn-back" onclick="prevStep(3)">
+                    <i class="fas fa-arrow-left"></i> Back
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-submit"
+                    id="submitPayment"
+                  >
+                    <i class="fas fa-lock"></i> Pay & Complete Booking
+                  </button>
+                </div>
+              </div>
+
+              <!-- Шаг 5: Подтверждение -->
+              <div class="form-step" id="step5">
+                <div class="confirmation-card">
+                  <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+
+                  <h2>Booking Confirmed!</h2>
+                  <p class="confirmation-text">
+                    Thank you for your reservation. We've sent a confirmation
+                    email with all the details.
+                  </p>
+
+                  <div class="appointment-summary">
+                    <h3>Appointment Summary</h3>
+                    <div class="summary-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Booking ID:</span>
+                        <span class="detail-value" id="summary-id"
+                          >ELAN-2024-001</span
+                        >
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Service:</span>
+                        <span class="detail-value" id="summary-service"
+                          >Hot Stone Therapy</span
+                        >
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Date & Time:</span>
+                        <span class="detail-value" id="summary-datetime"
+                          >Tomorrow at 2:00 PM</span
+                        >
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="summary-duration"
+                          >60 minutes</span
+                        >
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Client:</span>
+                        <span class="detail-value" id="summary-client"
+                          >John Smith</span
+                        >
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Total Paid:</span>
+                        <span class="detail-value" id="summary-total"
+                          >$89.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="confirmation-actions">
+                    <a href="index.html" class="btn btn-primary">
+                      <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <button class="btn btn-outline" onclick="startNewBooking()">
+                      <i class="fas fa-calendar-plus"></i> Book Another
+                    </button>
+                    <a href="#" class="btn btn-print" onclick="window.print()">
+                      <i class="fas fa-print"></i> Print Receipt
+                    </a>
+                  </div>
+
+                  <div class="confirmation-note">
+                    <p>
+                      <i class="fas fa-info-circle"></i> Please arrive 15
+                      minutes before your appointment. Cancellations must be
+                      made 24 hours in advance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column - total amount and information -->
+          <aside class="booking-sidebar">
+            <div class="booking-summary-card">
+              <h3><i class="fas fa-receipt"></i> Booking Summary</h3>
+
+              <div class="summary-content">
+                <div class="summary-item">
+                  <span class="item-label">Service:</span>
+                  <span class="item-value" id="sidebar-service">-</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-label">Date:</span>
+                  <span class="item-value" id="sidebar-date">-</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-label">Time:</span>
+                  <span class="item-value" id="sidebar-time">-</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-label">Duration:</span>
+                  <span class="item-value" id="sidebar-duration">-</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-label">Subtotal:</span>
+                  <span class="item-value" id="sidebar-subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                  <span class="item-label">Tax (8%):</span>
+                  <span class="item-value" id="sidebar-tax">$0.00</span>
+                </div>
+                <div class="summary-item total">
+                  <span class="item-label">Total:</span>
+                  <span class="item-value" id="sidebar-total">$0.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h4><i class="fas fa-shield-alt"></i> Secure Payment</h4>
+              <p>
+                Payments processed securely via Stripe with 256-bit encryption.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <h4><i class="fas fa-clock"></i> Flexible Cancellation</h4>
+              <p>Full refund if cancelled 24+ hours before appointment.</p>
+            </div>
+
+            <div class="info-card">
+              <h4><i class="fas fa-question-circle"></i> Need Help?</h4>
+              <p>Call: <strong>+1 (213) 555-0189</strong></p>
+              <p>Email: <strong>bookings@elanspa.com</strong></p>
+            </div>
+
+            <div class="payment-icons">
+              <i class="fab fa-cc-visa"></i>
+              <i class="fab fa-cc-mastercard"></i>
+              <i class="fab fa-cc-amex"></i>
+              <i class="fab fa-cc-discover"></i>
+              <i class="fab fa-cc-paypal"></i>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= FAQ SECTION ================= -->
+    <section class="booking-faq">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>When will my card be charged?</h4>
+            <p>
+              Your card will be charged immediately upon booking confirmation.
+              We use Stripe for secure payments.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h4>What is your refund policy?</h4>
+            <p>
+              Full refund if cancelled 24+ hours before appointment. 50% refund
+              for cancellations within 24 hours.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h4>What should I know before my visit?</h4>
+            <p>
+              To make the most of your experience, we recommend arriving 15-20 minutes before your appointment. This allows time to check in, change, and begin relaxing in our lounge. Please inform us of any allergies, medical conditions, or if you are pregnant when booking.
+          </div>
+
+          <div class="faq-item">
+            <h4>Can I change my appointment?</h4>
+            <p>
+              Yes, you can reschedule anytime up to 24 hours before your
+              appointment through your confirmation email.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+      <div class="footer-wave"></div>
+      <div class="container footer-container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-brand">
+            <a href="/" class="footer-logo"
+              >Élan<span style="color: var(--primary)">Spa</span></a
+            >
+            <p>
+              A professional spa dedicated to your wellness and relaxation.
+              Providing quality services since 1999.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html#services">Services</a></li>
+              <li><a href="index.html#specialists">Specialists</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#contact">Contacts</a></li>
+            </ul>
+          </div>
+
+          <!-- Contacts -->
+          <div class="footer-contact">
+            <h3>Contacts</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Silver Palm Avenue, Los
+              Angeles, CA, USA
+            </p>
+            <p><i class="fas fa-phone"></i> +1 (213) 555-0190</p>
+            <p><i class="fas fa-envelope"></i> info@elanspa.com</p>
+
+            <div class="contact-socials">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-vk"></i></a>
+              <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+          </div>
+
+          <!-- Working Hours -->
+          <div class="footer-hours">
+            <h3>Working Hours</h3>
+            <p>
+              <span class="day">Mon-Fri:</span>
+              <span class="time">8:00 AM - 8:00 PM</span>
+            </p>
+            <p>
+              <span class="day">Saturday:</span>
+              <span class="time">9:00 AM - 6:00 PM</span>
+            </p>
+            <p>
+              <span class="day">Sunday:</span>
+              <span class="time">9:00 AM - 4:00 PM</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="footer-bottom">
+          <div class="copyright">© 2024 Élan Spa. All rights reserved.</div>
+
+          <div class="footer-payments">
+            <div class="payment-icon">💳</div>
+            <div class="payment-icon">📱</div>
+            <div class="payment-icon">🏦</div>
+          </div>
+
+          <div class="footer-links-bottom">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Use</a>
+            <a href="/sitemap">Site Map</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="js/main.js"></script>
+    <script src="js/booking-page.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+
+    <script>
+      // Initialize date picker
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      const dateInput = document.getElementById("bookingDate");
+      dateInput.min = today.toISOString().split("T")[0];
+      dateInput.value = tomorrow.toISOString().split("T")[0];
+
+      // Initialize services and times
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeBooking();
+      });
+    </script>
+  </body>
+</html>

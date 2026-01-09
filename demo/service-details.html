@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details - Élan Spa</title>
+    
+    <link rel="icon" href="favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/service-details.css">
+    
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    
+    <!-- ================= PRELOADER ================= -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="spa-logo">
+                <span>É</span>
+                <span>l</span>
+                <span>a</span>
+                <span>n</span>
+                <span class="space"></span>
+                <span>S</span>
+                <span>p</span>
+                <span>a</span>
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner-circle"></div>
+                <div class="spinner-circle"></div>
+                <div class="spinner-circle"></div>
+            </div>
+            <p class="preloader-text">Loading wellness experience...</p>
+        </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Élan Spa</a>
+            </div>
+
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#prices">Prices</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="booking-page.html" class="btn-header-book">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= BREADCRUMB ================= -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="index.html#services">Services</a>
+                <span class="separator">/</span>
+                <span class="current">Hot Stone Therapy</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- ================= SERVICE HERO ================= -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="service-hero-content">
+                <div class="service-badges">
+                    <span class="badge popular">Popular Choice</span>
+                    <span class="badge duration"><i class="far fa-clock"></i> 60 min</span>
+                    <span class="badge rating"><i class="fas fa-star"></i> 4.9/5</span>
+                </div>
+                
+                <h1 class="service-title">Hot Stone Therapy</h1>
+                <p class="service-subtitle">Deep muscle relaxation using warm basalt stones to ease tension and improve circulation.</p>
+                
+                <div class="hero-actions">
+                    <div class="price-display">
+                        <span class="price">$89</span>
+                        <span class="price-note">for 60-minute session</span>
+                    </div>
+                    <a href="booking-page.html?service=hot-stone" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICE GALLERY ================= -->
+    <section class="service-gallery">
+        <div class="container">
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <div class="main-image">
+                        <img src="images/hot-stone-1.webp" alt="Hot Stone Therapy" id="mainImage">
+                        <div class="image-overlay">
+                            <button class="zoom-btn" id="zoomBtn">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-thumbnails">
+                    <div class="thumbnail active" data-image="images/hot-stone-1.webp">
+                        <img src="images/hot-stone-1.webp" alt="Hot Stone Therapy">
+                    </div>
+                    <div class="thumbnail" data-image="images/hot-stone-2.webp">
+                        <img src="images/hot-stone-2.webp" alt="Hot Stone Therapy Closeup">
+                    </div>
+                    <div class="thumbnail" data-image="images/hot-stone-3.webp">
+                        <img src="images/hot-stone-3.webp" alt="Stones Arrangement">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICE MAIN CONTENT ================= -->
+    <section class="service-main">
+        <div class="container">
+            <div class="service-layout">
+                <!-- Main Content -->
+                <div class="service-content">
+                    <!-- Description -->
+                    <section class="service-description">
+                        <h2><i class="fas fa-spa"></i> About This Treatment</h2>
+                        <p>Hot Stone Therapy is a deeply relaxing massage treatment that uses smooth, heated basalt stones placed on specific points of the body. The heat from the stones penetrates deep into muscles, relieving tension and promoting relaxation.</p>
+                        
+                        <div class="description-grid">
+                            <div class="desc-item">
+                                <i class="fas fa-thermometer-half"></i>
+                                <h4>Perfect Temperature</h4>
+                                <p>Stones heated to optimal temperature for maximum therapeutic benefit</p>
+                            </div>
+                            <div class="desc-item">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <h4>Deep Relaxation</h4>
+                                <p>Combines heat therapy with massage techniques for profound relaxation</p>
+                            </div>
+                            <div class="desc-item">
+                                <i class="fas fa-leaf"></i>
+                                <h4>Natural Materials</h4>
+                                <p>Using natural basalt stones and premium essential oils</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Benefits -->
+                    <section class="service-benefits">
+                        <h2><i class="fas fa-heart"></i> Benefits</h2>
+                        <div class="benefits-grid">
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <h4>Improves Circulation</h4>
+                                <p>Heat dilates blood vessels, improving blood flow</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4>Reduces Stress</h4>
+                                <p>Deep relaxation helps alleviate mental tension</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <h4>Better Sleep</h4>
+                                <p>Promotes restful sleep and overall well-being</p>
+                            </div>
+                            <div class="benefit-card">
+                                <div class="benefit-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <h4>Muscle Recovery</h4>
+                                <p>Relieves muscle soreness and speeds up recovery</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- What to Expect -->
+                    <section class="service-process">
+                        <h2><i class="far fa-clock"></i> What to Expect</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker">1</div>
+                                <div class="timeline-content">
+                                    <h4>Consultation</h4>
+                                    <p>Brief discussion about your needs and any areas of concern</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">2</div>
+                                <div class="timeline-content">
+                                    <h4>Stone Preparation</h4>
+                                    <p>Basalt stones are heated in water to the perfect temperature</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">3</div>
+                                <div class="timeline-content">
+                                    <h4>Treatment</h4>
+                                    <p>Stones placed on key points followed by therapeutic massage</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">4</div>
+                                <div class="timeline-content">
+                                    <h4>Relaxation</h4>
+                                    <p>Time to rest and enjoy the afterglow of the treatment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="service-sidebar">
+                    <!-- Booking Widget -->
+                    <div class="booking-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-calendar-alt"></i> Book This Service</h3>
+                            <p>Ready to experience deep relaxation?</p>
+                        </div>
+                        
+                        <div class="service-info">
+                            <div class="info-item">
+                                <span class="label">Duration:</span>
+                                <span class="value">60 minutes</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Therapist:</span>
+                                <span class="value">Anna Smith</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Room:</span>
+                                <span class="value">Private Suite</span>
+                            </div>
+                        </div>
+                        
+                        <div class="price-summary">
+                            <div class="price-item">
+                                <span>Service</span>
+                                <span>$89.00</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Tax</span>
+                                <span>$7.12</span>
+                            </div>
+                            <div class="price-item total">
+                                <span>Total</span>
+                                <span>$96.12</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-book" onclick="window.location.href='booking-page.html?service=hot-stone'">
+                            <i class="fas fa-calendar-check"></i> Book Now
+                        </button>
+                        
+                        <div class="booking-features">
+                            <div class="feature">
+                                <i class="fas fa-clock"></i>
+                                <span>Flexible Timing</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-undo"></i>
+                                <span>Easy Reschedule</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-lock"></i>
+                                <span>Secure Payment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ -->
+                    <div class="faq-widget">
+                        <h3><i class="far fa-question-circle"></i> Frequently Asked Questions</h3>
+                        <div class="faq-accordion">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Is this treatment suitable for everyone?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Hot Stone Therapy is generally safe for most people. However, we recommend consulting with your therapist if you have certain medical conditions.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    What should I wear?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Wear comfortable clothing. You'll be provided with a robe and private changing area. The therapist will ensure your comfort and privacy throughout.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    Can I combine with other treatments?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Yes! This treatment pairs beautifully with Aroma Therapy or a Relaxing Facial. Ask about our combination packages.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Services -->
+                    <div class="related-services">
+                        <h3><i class="fas fa-hand-holding-heart"></i> You Might Also Like</h3>
+                        <div class="related-list">
+                            <a href="service-details.html" class="related-item">
+                                <img src="images/aroma-therapy.jpg" alt="Aroma Therapy">
+                                <div class="related-info">
+                                    <h4>Aroma Therapy Massage</h4>
+                                    <div class="related-price">$79</div>
+                                </div>
+                            </a>
+                            <a href="service-details.html" class="related-item">
+                                <img src="images/deep-tissue.webp" alt="Deep Tissue">
+                                <div class="related-info">
+                                    <h4>Deep Tissue Massage</h4>
+                                    <div class="related-price">$85</div>
+                                </div>
+                            </a>
+                            <a href="service-details.html" class="related-item">
+                                <img src="images/couples-massage.webp" alt="Couples Massage">
+                                <div class="related-info">
+                                    <h4>Couples Massage</h4>
+                                    <div class="related-price">$165</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA SECTION ================= -->
+    <section class="service-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience Deep Relaxation?</h2>
+                <p>Book your Hot Stone Therapy session today and discover the ultimate in relaxation and rejuvenation.</p>
+                <div class="cta-buttons">
+                    <a href="booking-page.html?service=hot-stone" class="btn btn-primary btn-large">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                    <a href="index.html#contact" class="btn btn-outline btn-large">
+                        <i class="fas fa-phone"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+  <div class="footer-wave"></div>
+  <div class="container footer-container">
+    
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">Élan<span style="color: var(--primary)">Spa</span></a>
+        <p>A professional spa dedicated to your wellness and relaxation. Providing quality services since 1999.</p>
+      </div>
+      
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#specialists">Specialists</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#index.html#contact">Contacts</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Contacts -->
+      <div class="footer-contact">
+        <h3>Contacts</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Silver Palm Avenue, Los Angeles, CA, USA</p>
+        <p><i class="fas fa-phone"></i> +1 (213) 555-0190</p>
+        <p><i class="fas fa-envelope"></i> info@elanspa.com</p>
+        
+        <div class="contact-socials">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-vk"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      
+      <!-- Working Hours -->
+      <div class="footer-hours">
+        <h3>Working Hours</h3>
+        <p><span class="day">Mon-Fri:</span> <span class="time">8:00 AM - 8:00 PM</span></p>
+        <p><span class="day">Saturday:</span> <span class="time">9:00 AM - 6:00 PM</span></p>
+        <p><span class="day">Sunday:</span> <span class="time">9:00 AM - 4:00 PM</span></p>
+        
+    </div>
+    </div>
+    
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+      <div class="copyright">
+        © 2024 Élan Spa. All rights reserved.
+      </div>
+      
+      <div class="footer-payments">
+        <div class="payment-icon">💳</div>
+        <div class="payment-icon">📱</div>
+        <div class="payment-icon">🏦</div>
+      </div>
+      
+      <div class="footer-links-bottom">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/sitemap">Site Map</a>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+</footer>
+     
+
+    <!-- ================= IMAGE MODAL ================= -->
+    <div class="modal" id="imageModal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-content">
+            <img src="" alt="Enlarged view" id="modalImage">
+        </div>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="js/main.js"></script>
+    <script src="js/service-details.js"></script>
+    
+</body>
+</html>
