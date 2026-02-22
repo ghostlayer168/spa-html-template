@@ -1,6 +1,7 @@
 # SPA Landing Page – Premium Website Template
 
 A modern, responsive SPA & Massage Salon landing page template designed for commercial use.
+See the template in action: **[SPA Template Demo](https://ghostlayer168.github.io/spa-html-template/demo/)**
 
 ## Overview
 
